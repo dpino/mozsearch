@@ -322,7 +322,11 @@ let Analyzer = {
 
   program(prog) {
     for (let stmt of prog.body) {
-      this.statement(stmt);
+      try {
+        this.statement(stmt);
+      } catch (e) {
+
+      }
     }
   },
 

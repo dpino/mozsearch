@@ -15,6 +15,7 @@ export CONFIG_REPO=$(readlink -f $1)
 CONFIG_INPUT="$2"
 export WORKING=$(readlink -f $3)
 
+KEEP_WORKING=1
 if [ -z "${KEEP_WORKING:-}" ]; then
     echo "Removing old contents of $WORKING/. Set KEEP_WORKING=1 to preserve the contents of $WORKING/."
     rm -rf $WORKING/*

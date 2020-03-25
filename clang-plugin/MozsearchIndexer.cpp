@@ -741,6 +741,9 @@ public:
     }
     return Super::TraverseFunctionDecl(D);
   }
+  bool TraverseClassTemplatePartialSpecializationDecl(ClassTemplatePartialSpecializationDecl *D) {
+    return true;
+  }
   bool TraverseCXXMethodDecl(CXXMethodDecl *D) {
     AutoSetContext Asc(this, D);
     const FunctionDecl *Def;

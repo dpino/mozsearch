@@ -14,9 +14,11 @@ CONFIG_FILE=$(realpath $1)
 TREE_NAME=$2
 
 pushd $FILES_ROOT
-cat $INDEX_ROOT/ipdl-files | \
-    xargs $MOZSEARCH_PATH/tools/target/release/ipdl-analyze $(cat $INDEX_ROOT/ipdl-includes) \
-          -d $INDEX_ROOT/analysis/__GENERATED__/ipc/ipdl/_ipdlheaders \
-          -b $FILES_ROOT \
-          -a $INDEX_ROOT/analysis
-popd
+if [[ -f "$INDEX_ROOT/ipdl-files" && -f "$INDEX_ROOT/ipdl-includes" ]]; then
+   cat $INDEX_ROOT/ipdl-files | \
+       xargs $MOZSEARCH_PATH/tools/target/release/ipdl-analyze $(cat $INDEX_ROOT/ipdl-includes) \
+             -d $INDEX_ROOT/analysis/__GENERATED__/ipc/ipdl/_ipdlheaders \
+             -b $FILES_ROOT \
+             -a $INDEX_ROOT/analysis
+   popd
+fi

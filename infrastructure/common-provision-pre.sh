@@ -73,7 +73,7 @@ if [ ! -d bazelisk ]; then
     chmod +x bazelisk-linux-amd64
   popd
 fi
-BAZEL=~/bazelisk/bazelisk-linux-amd64
+BAZEL=$(dirname "$0")/bazelisk/bazelisk-linux-amd64
 
 # Clang
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
